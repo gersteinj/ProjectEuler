@@ -23,6 +23,8 @@ def factor(target):
             logger.info('  %s is a factor of %s' % (n, target))
             factors.append(n)
             break
+    
+    # Figured out where I was messing up - had to exit for loop
     new_target = target // factors[-1]
     logger.debug('  new target is %s' % new_target)
     if new_target > 1:
