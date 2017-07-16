@@ -9,30 +9,16 @@ four million, find the sum of the even-valued terms.
 '''
 total = 2
 
-def next_fib(a, b):
-    '''function to return the next number in the Fibonacci sequence'''
-    result = a + b
-    return result
-
-
-def add_even_fibs(a, b, limit):
-    '''function to return th sum of even numbe in the Fibonacci sequence
-    up to a specified value'''
-    
+def fibs(a, b, limit):
     global total
-    
-    # Get the next Fibonacci number
-    result = next_fib(a, b)
-    
-    # Add the result to the total if the result is even
-    if result % 2 == 0 and result <= limit:
-        total += result
-        # Get the next value in the sequence
-    
-    if result <= limit:
-        add_even_fibs(b, result, limit)
-    
-    # Return the total to the program
-    return total
+    results = [a, b]
+    new_fib = a + b
+    while new_fib <= limit:
+        results.append(new_fib)
+        a, b = b, new_fib
+        if new_fib % 2 == 0:
+            total += new_fib
+    return results
 
-print(add_even_fibs(1, 2, 4000000))
+print(fibs(1, 2, 4000000))
+print(total)
